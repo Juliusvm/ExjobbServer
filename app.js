@@ -9,12 +9,18 @@ const server = http.createServer(app);
 var websocket = require('./Websocket.js').createWebsocket(server)
 
 
-longpoll.create("/poll");
-
+longpoll.create("/poll1");
+longpoll.create("/poll5")
  
+
+//Public every 1 second
+setInterval(function () { 
+    longpoll.publish("/poll1", "Hello");
+}, 1000);
+
 // Publish every 5 seconds
 setInterval(function () { 
-    longpoll.publish("/poll", "Hello");
+    longpoll.publish("/poll5", "Hello");
 }, 5000);
 
 server.listen(port, function listening() {
