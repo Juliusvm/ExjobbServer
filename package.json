@@ -1,0 +1,17 @@
+{
+  "name": "exjobb",
+  "version": "1.0.0",
+  "description": "Server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "ws": "*",
+    "express-longpoll": "*"
+  },
+  "author": "Julius",
+  "license": "ISC"
+}
