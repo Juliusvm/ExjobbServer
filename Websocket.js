@@ -40,11 +40,11 @@ module.exports.createWebsocket = function(server)
     
     function getInterval(urlParam)
     {
-        if(urlParam == 1)
-            return 1000;
+        if(urlParam == 0)
+            return 500;
     
-        if(urlParam == 5)
-            return 5000;
+        if(urlParam == 1)
+            return 10000;
     }
     
   
