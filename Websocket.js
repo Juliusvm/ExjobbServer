@@ -19,8 +19,6 @@ module.exports.createWebsocket = function(server)
       }
         
     
-      console.log("Someone connected")
-    
       ws.on('message', function incoming(message) {
         console.log('received: %s', message);
       });
