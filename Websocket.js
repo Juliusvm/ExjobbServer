@@ -31,8 +31,8 @@ module.exports.createWebsocket = function(server)
       var pingClient = setInterval(function() {
         ws.send("ping")
       }, interval);
-     
-      ws.send('Connected');
+
+
     });
     
     
