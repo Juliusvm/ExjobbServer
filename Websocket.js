@@ -19,22 +19,22 @@ module.exports.createWebsocket = function(server)
       }
         
     
-      ws.send('Connected');
+      console.log("Someone connected")
     
       ws.on('message', function incoming(message) {
         console.log('received: %s', message);
       });
     
       ws.on('close', function close() {
-        ws.send("Socket closed")
-        clearInterval(pingClient)
+        console.log('disconnected');
+        clearInterval(test)
       });
     
-      var pingClient = setInterval(function() {
+      var test = setInterval(function() {
         ws.send("ping")
       }, interval);
      
-
+      ws.send('The servers says hello and welcome');
     });
     
     
