@@ -13,14 +13,14 @@ longpoll.create("/poll0");
 longpoll.create("/poll1")
  
 
-//Public every 0.5 second
+//Public every 1 second
 setInterval(function () { 
-    longpoll.publish("/poll0", "Ping");
+    longpoll.publish("/poll0", "Hello");
 }, 500);
 
-// Publish every 10 seconds
+// Publish every 5 seconds
 setInterval(function () { 
-    longpoll.publish("/poll1", "Ping");
+    longpoll.publish("/poll1", "Hello");
 }, 10000);
 
 server.listen(port, function listening() {
