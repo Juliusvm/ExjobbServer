@@ -34,7 +34,7 @@ module.exports.createWebsocket = function(server)
         ws.send("ping")
       }, interval);
      
-      ws.send('The servers says hello and welcome');
+      ws.send('Connected');
     });
     
     
