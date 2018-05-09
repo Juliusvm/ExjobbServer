@@ -27,10 +27,10 @@ module.exports.createWebsocket = function(server)
     
       ws.on('close', function close() {
         console.log('disconnected');
-        clearInterval(test)
+        clearInterval(pingClient)
       });
     
-      var test = setInterval(function() {
+      var pingClient = setInterval(function() {
         ws.send("ping")
       }, interval);
      
