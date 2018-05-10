@@ -24,7 +24,7 @@ module.exports.createWebsocket = function(server)
       });
     
       ws.on('close', function close() {
-        console.log('disconnected');
+        ws.send("Disconnected")
         clearInterval(pingClient)
       });
     
