@@ -10,7 +10,9 @@ module.exports.createWebsocket = function(server)
     
       var urlParam = req.url.replace('/', '');
       var interval = getInterval(urlParam)
-    
+      var isConnected = true
+      console.log("Someone connected")
+
       if(typeof interval == 'undefined')
       {
             ws.send("Invalid url parameter. Valid parameters are 1 and 5")
@@ -26,11 +28,21 @@ module.exports.createWebsocket = function(server)
       ws.on('close', function close() {
         ws.send("Disconnected")
         console.log("Disconnected")
+        isConnected = false
         clearInterval(pingClient)
       });
     
       var pingClient = setInterval(function() {
-        ws.send("ping")
+        
+        ws.clients.forEach(function each(client) {
+          
+          if (client.readyState === client.OPEN)
+          {
+            ws.send("ping")
+          }
+      });
+
+          
       }, interval);
 
 
