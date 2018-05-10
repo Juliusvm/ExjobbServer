@@ -36,7 +36,6 @@ module.exports.createWebsocket = function(server)
       
         
         ws.send("Ping")
-        console.log("Pinged client")
           
       }, interval);
 
