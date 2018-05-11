@@ -16,13 +16,15 @@ longpoll.create("/poll1")
 //Public every 0.5 second
 setInterval(function () { 
     longpoll.publish("/poll0", "Ping");
-    console.log("Ping sent to client")
+
 }, 500);
 
 // Publish every 10 seconds
 setInterval(function () { 
-    longpoll.publish("/poll1", "Ping");
-    console.log("Ping sent to client")
+    longpoll.publish("/poll1", "Ping").then(() => 
+    {
+        console.log("Sent ping to client!")
+    })
 }, 10000);
 
 server.listen(port, function listening() {
