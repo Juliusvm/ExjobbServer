@@ -15,17 +15,31 @@ longpoll.create("/poll1")
 
 //Public every 0.5 second
 setInterval(function () { 
-    longpoll.publish("/poll0", "Ping");
+    longpoll.publish("/poll0", makeid());
 
 }, 500);
 
 // Publish every 10 seconds
 setInterval(function () { 
-    longpoll.publish("/poll1", "Ping").then(() => 
+    longpoll.publish("/poll1", makeid()).then(() => 
     {
         console.log("Sent ping to client!")
     })
 }, 10000);
+
+
+
+function makeid() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 5; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+//Publish every 
+
 
 server.listen(port, function listening() {
   console.log('Listening on %d', server.address().port);
