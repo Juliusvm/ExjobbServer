@@ -24,7 +24,7 @@ module.exports.createWebsocket = function(server)
         
     
       ws.on('message', function incoming(message) {
-        console.log('received: %s', message);
+        console.log('Meddelande mottaget: %s', message);
       });
     
       ws.on('close', function close() {
