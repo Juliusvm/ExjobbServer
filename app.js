@@ -7,6 +7,7 @@ var port = process.env.PORT || 3000;
 
 const server = http.createServer(app);
 var websocket = require('./Websocket.js').createWebsocket(server)
+var helper = require('./Helper.js')
 
 
 longpoll.create("/poll0");
@@ -15,30 +16,19 @@ longpoll.create("/poll1")
 
 //Public every 0.5 second
 setInterval(function () { 
-    longpoll.publish("/poll0", makeid());
+    longpoll.publish("/poll0", helper.randomChars());
 
 }, 500);
 
 // Publish every 10 seconds
 setInterval(function () { 
-    longpoll.publish("/poll1", makeid()).then(() => 
+    longpoll.publish("/poll1", helper.randomChars()).then(() => 
     {
         console.log("Sent ping to client!")
     })
 }, 10000);
 
 
-
-function makeid() {
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (var i = 0; i < 4; i++)
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  return text;
-}
-//Publish every 
 
 
 server.listen(port, function listening() {

@@ -1,5 +1,5 @@
 const WebSocket = require('ws');
- 
+var helper = require('./Helper.js')
  
 module.exports.createWebsocket = function(server)
 {
@@ -36,7 +36,7 @@ module.exports.createWebsocket = function(server)
       var pingClient = setInterval(function() {
       
         
-        ws.send("Ping")
+        ws.send(helper.randomChars())
           
       }, interval);
 
